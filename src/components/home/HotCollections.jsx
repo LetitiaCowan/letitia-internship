@@ -17,13 +17,12 @@ const HotCollections = () => {
       );
       setCollections(data.data);
       setIsLoaded(true);
-      console.log(collections)
     }
     main();
   }, []); // fetching data from cloud for carousel
 
 
-  const arrowStyle = { // arrow styling (had to manual style as react slick doesnt allow complete customization for the arrows)
+  const arrowStyle = { // arrow styling (had to manual style as react-slick doesn't allow complete customization for the arrows)
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
