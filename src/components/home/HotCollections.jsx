@@ -120,7 +120,7 @@ const HotCollections = () => {
                           />
                         </Link>
                       </div>
-                      <div className="row">
+                      <div >
                         <div className="nft_coll_pp">
                           <Link to="/author">
                             <img
