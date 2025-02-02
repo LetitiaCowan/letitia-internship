@@ -9088,6 +9088,8 @@ i.circle-icon {
   margin: 0 auto;
 }
 
+
+
 /* ================================================== */
 
 /* transition */
@@ -13223,6 +13225,13 @@ a.read_more i {
 
 .nft_coll_info {
   padding-bottom: 10px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .nft_coll h4 {
