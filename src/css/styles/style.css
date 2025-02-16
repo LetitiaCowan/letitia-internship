@@ -16723,3 +16723,8 @@ img {
 .no-cursor {
   cursor: not-allowed;
 }
+
+
+.gap {
+  margin: 0 4px
+}
