@@ -5,7 +5,7 @@ const CountdownTimer = ({ expiryDate }) => {
 
   useEffect(() => {
     if (!expiryDate) {
-      setTimeLeft("No Expiry Date");
+      setTimeLeft("Expired");
       return;
     }
 
