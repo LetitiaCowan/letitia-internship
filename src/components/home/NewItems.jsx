@@ -151,8 +151,8 @@ const NewItems = () => {
           </Slider>) 
           : 
           (  <Slider {...settings}>
-            {new Array(4).fill(0).map((item) => (
-              <div key={item.id}>
+            {new Array(4).fill(0).map((item, index) => (
+              <div key={index}>
                 <div className="nft__item gap">
                   <div className="author_list_pp">
                     <Link
