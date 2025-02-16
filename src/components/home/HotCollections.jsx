@@ -6,23 +6,24 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
 const HotCollections = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [collections, setCollections] = useState([]);
 
   useEffect(() => {
-    async function main() {
+    async function fetchCollections() {
       const data = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections"
       );
       setCollections(data.data);
       setIsLoaded(true);
     }
-    main();
+    fetchCollections();
   }, []); // fetching data from cloud for carousel
 
-
-  const arrowStyle = { // arrow styling (had to manual style as react-slick doesn't allow complete customization for the arrows)
+  const arrowStyle = {
+    // arrow styling (had to manual style as react-slick doesn't allow complete customization for the arrows)
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -42,7 +43,7 @@ const HotCollections = () => {
     const { onClick } = props;
     return (
       <div
-        style={{ ...arrowStyle, left: "-30px" }} // Adjust for responsiveness
+        style={{ ...arrowStyle, left: "-24px" }} // Adjust for responsiveness
         onClick={onClick}
       >
         <FaArrowLeft style={{ color: "black", fontSize: "20px" }} />
@@ -54,7 +55,7 @@ const HotCollections = () => {
     const { onClick } = props;
     return (
       <div
-        style={{ ...arrowStyle, right: "-30px" }} // Adjust for responsiveness
+        style={{ ...arrowStyle, right: "-24px" }} // Adjust for responsiveness
         onClick={onClick}
       >
         <FaArrowRight style={{ color: "black", fontSize: "20px" }} />
@@ -120,7 +121,7 @@ const HotCollections = () => {
                           />
                         </Link>
                       </div>
-                      <div >
+                      <div>
                         <div className="nft_coll_pp">
                           <Link to="/author">
                             <img
