@@ -11,7 +11,6 @@ const TopSellers = () => {
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers"
       );
       setSellers(data);
-      console.log(data); // Log full response
       setIsLoaded(true)
   }
 
@@ -36,7 +35,7 @@ const TopSellers = () => {
                 ? (sellers.map((seller, index) => (
                   <li key={seller.id}>
                     <div className="author_list_pp">
-                      <Link to="/author">
+                      <Link to={`/author/${seller.authorId}`}>
                         <img
                           className="lazy pp-author"
                           src={seller.authorImage}

@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ItemCardSkeleton from "../UI/ItemCardSkeleton";
 
 
 const HotCollections = () => {
@@ -147,50 +148,7 @@ const HotCollections = () => {
               <Slider {...settings}>
                 {new Array(4).fill(0).map((_, index) => (
                   <div key={index}>
-                    <div className="nft_coll mx-1">
-                      <div
-                        style={{
-                          backgroundColor: "#D3D3D3",
-                        }}
-                        className="nft_wrap"
-                      >
-                        <Link to="/item-details">
-                          <img src={null} className="lazy img-fluid" alt="" />
-                        </Link>
-                      </div>
-                      <div className="row">
-                        <div className="nft_coll_pp">
-                          <Link to="/author">
-                            <img className="lazy pp-coll" src={null} alt="" />
-                          </Link>
-                          <i className="fa fa-check"></i>
-                        </div>
-                        <div
-                          className="nft_coll_info flex-center"
-                          style={{
-                            marginTop: "4px",
-                          }}
-                        >
-                          <Link to="/explore">
-                            <div
-                              style={{
-                                backgroundColor: "#D3D3D3",
-                                height: "16px",
-                                width: "68px",
-                              }}
-                            ></div>
-                          </Link>
-                          <div
-                            style={{
-                              backgroundColor: "#D3D3D3",
-                              marginTop: "4px",
-                              height: "16px",
-                              width: "38px",
-                            }}
-                          ></div>
-                        </div>
-                      </div>
-                    </div>
+                    <ItemCardSkeleton />
                   </div>
                 ))}
               </Slider>
