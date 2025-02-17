@@ -123,7 +123,6 @@ const NewItems = () => {
                     </Link>
                   </div>
 
-                  {/* Countdown Timer Component */}
                   <CountdownTimer expiryDate={item.expiryDate} />
 
                   <div className="nft__item_wrap">
@@ -151,42 +150,19 @@ const NewItems = () => {
           </Slider>) 
           : 
           (  <Slider {...settings}>
-            {new Array(4).fill(0).map((item, index) => (
+            {new Array(4).fill(0).map((_, index) => (
               <div key={index}>
                 <div className="nft__item gap">
                   <div className="author_list_pp">
-                    <Link
-                      to="/author"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="Creator: Monica Lucas"
-                    >
-                      <img className="lazy" src={item.authorImage} alt="" />
-                      <i className="fa fa-check"></i>
-                    </Link>
+                    <div className="skeleton-box" style={{ width: '50px', height: '50px', borderRadius: '50%' }}></div>
                   </div>
-
-                  {/* Countdown Timer Component */}
-                  <CountdownTimer expiryDate={item.expiryDate} />
 
                   <div className="nft__item_wrap">
-                    <Link to="/item-details">
-                      <img
-                        src={item.nftImage}
-                        className="lazy nft__item_preview"
-                        alt=""
-                      />
-                    </Link>
+                    <div className="skeleton-box" style={{ width: '100%', height: '200px' }}></div>
                   </div>
                   <div className="nft__item_info">
-                    <Link to="/item-details">
-                      <h4>{item.title}</h4>
-                    </Link>
-                    <div className="nft__item_price">{item.price} ETH</div>
-                    <div className="nft__item_like">
-                      <i className="fa fa-heart"></i>
-                      <span>{item.likes}</span>
-                    </div>
+                    <div className="skeleton-box" style={{ width: '80%', height: '20px', marginBottom: '10px' }}></div>
+                    <div className="skeleton-box" style={{ width: '60%', height: '20px' }}></div>
                   </div>
                 </div>
               </div>
