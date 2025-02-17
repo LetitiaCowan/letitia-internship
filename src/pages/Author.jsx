@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import AuthorImage from "../images/author_thumbnail.jpg";
+import axios from "axios";
 
 const Author = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const param = useParams();
+  const [test, setTest] = useState({});
+
+  async function fetchAuthor(param) {
+    const { data } = await axios.get(
+      `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${param.id}`
+    );
+    setTest(data);
+  }
+
+  useEffect(() => {
+    fetchAuthor(param);
+  }, []);
+
+  console.log(test);
+
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
