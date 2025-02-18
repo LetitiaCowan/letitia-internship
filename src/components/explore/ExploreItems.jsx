@@ -17,7 +17,6 @@ const ExploreItems = () => {
       }`
     );
     setExporeItems(data);
-    console.log(data);
     setIsLoaded(true);
   }
 
