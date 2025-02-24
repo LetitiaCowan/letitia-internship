@@ -21,10 +21,9 @@ const HotCollections = () => {
       setIsLoaded(true);
     }
     fetchCollections();
-  }, []); // fetching data from cloud for carousel
-
+  }, []); 
+  
   const arrowStyle = {
-    // arrow styling (had to manual style as react-slick doesn't allow complete customization for the arrows)
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -68,13 +67,13 @@ const HotCollections = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4, // Default for large screens
+    slidesToShow: 4, // Large screens
     slidesToScroll: 1,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
     responsive: [
       {
-        breakpoint: 1024, // Tablets and small desktops
+        breakpoint: 1024, // Small desktops
         settings: {
           slidesToShow: 3,
         },
@@ -114,7 +113,7 @@ const HotCollections = () => {
                   <div key={user.id}>
                     <div className="nft_coll mx-1">
                       <div className="nft_wrap">
-                        <Link to="/item-details">
+                        <Link to={`/item-details/${user.nftId}`}>
                           <img
                             src={user.nftImage}
                             className="lazy img-fluid"
@@ -134,7 +133,7 @@ const HotCollections = () => {
                           <i className="fa fa-check"></i>
                         </div>
                         <div className="nft_coll_info">
-                          <Link to="/explore">
+                          <Link to={`/author/${user.authorId}`}>
                             <h4>{user.title}</h4>
                           </Link>
                           <span>ERC-{user.code}</span>

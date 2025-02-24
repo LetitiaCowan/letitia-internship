@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import ItemCard from "../UI/ItemCard";
 import ItemCardSkeleton from "../UI/ItemCardSkeleton";
 

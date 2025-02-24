@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import CountdownTimer from "./CountdownTimer";
 import { Link } from "react-router-dom";
 
 const ItemCard = ({ item, index, dp }) => {
+  const [isLiked, setIsLiked] = useState(false);
+  const [updatedItem, setUpdatedItem] = useState({ ...item });
+
+  function addLike() {
+    setUpdatedItem((prevItem) => ({
+      ...prevItem,
+      likes: prevItem.likes + 1,
+    }));
+    setIsLiked(true);
+  }
+
+  function removeLike() {
+    setUpdatedItem((prevItem) => ({
+      ...prevItem,
+      likes: prevItem.likes - 1,
+    }));
+    setIsLiked(false);
+  }
+
   return (
     <div className="nft__item gap">
       <div className="author_list_pp">
@@ -20,19 +39,26 @@ const ItemCard = ({ item, index, dp }) => {
       <CountdownTimer expiryDate={item.expiryDate} />
 
       <div className="nft__item_wrap">
-        <Link to="/item-details">
+        <Link to={`/item-details/${item.nftId}`}>
           <img src={item.nftImage} className="lazy nft__item_preview" alt="" />
         </Link>
       </div>
       <div className="nft__item_info">
-        <Link to="/item-details">
+        <Link to={`/item-details/${item.nftId}`}>
           <h4>{item.title}</h4>
         </Link>
         <div className="nft__item_price">{item.price} ETH</div>
-        <div className="nft__item_like">
-          <i className="fa fa-heart"></i>
-          <span>{item.likes}</span>
-        </div>
+        {isLiked ? (
+          <button onClick={removeLike} className="nft__item_like likes_colour">
+            <i className="fa fa-heart"></i>
+            <span>{updatedItem.likes}</span>
+          </button>
+        ) : (
+          <button onClick={addLike} className="nft__item_like">
+            <i className="fa fa-heart"></i>
+            <span>{updatedItem.likes}</span>
+          </button>
+        )}
       </div>
     </div>
   );
