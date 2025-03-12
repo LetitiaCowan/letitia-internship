@@ -6,11 +6,15 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ItemCardSkeleton from "../UI/ItemCardSkeleton";
-
+import Aos from "aos";
 
 const HotCollections = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [collections, setCollections] = useState([]);
+
+  Aos.init({
+    once: true, // ensures it only animates once
+  });
 
   useEffect(() => {
     async function fetchCollections() {
@@ -21,8 +25,8 @@ const HotCollections = () => {
       setIsLoaded(true);
     }
     fetchCollections();
-  }, []); 
-  
+  }, []);
+
   const arrowStyle = {
     display: "flex",
     alignItems: "center",
@@ -111,7 +115,12 @@ const HotCollections = () => {
               <Slider {...settings}>
                 {collections.map((user) => (
                   <div key={user.id}>
-                    <div className="nft_coll mx-1">
+                    <div
+                      data-aos-once="true"
+                      data-aos="fade-up"
+                      data-aos-duration="1500"
+                      className="nft_coll mx-1"
+                    >
                       <div className="nft_wrap">
                         <Link to={`/item-details/${user.nftId}`}>
                           <img

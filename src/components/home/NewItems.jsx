@@ -6,10 +6,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import ItemCard from "../UI/ItemCard";
+import Aos from "aos";
 
 const NewItems = () => {
   const [items, setItems] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false)
+
+    Aos.init({
+      once: true, // ensures it only animates once
+    });
 
   useEffect(() => {
     async function fetchNewItems() {

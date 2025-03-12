@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import ItemCard from "../UI/ItemCard";
 import ItemCardSkeleton from "../UI/ItemCardSkeleton";

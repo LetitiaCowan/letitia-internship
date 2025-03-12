@@ -23,7 +23,12 @@ const ItemCard = ({ item, index, dp }) => {
   }
 
   return (
-    <div className="nft__item gap">
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      data-aos-once="true"
+      className="nft__item gap"
+    >
       <div className="author_list_pp">
         <Link
           to={`/author/${item.authorId}`}
