@@ -10,11 +10,11 @@ import Aos from "aos";
 
 const NewItems = () => {
   const [items, setItems] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
 
-    Aos.init({
-      once: true, // ensures it only animates once
-    });
+  Aos.init({
+    once: true, // ensures it only animates once
+  });
 
   useEffect(() => {
     async function fetchNewItems() {
@@ -22,11 +22,10 @@ const NewItems = () => {
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems"
       );
       setItems(data);
-      setIsLoaded(true)
+      setIsLoaded(true);
     }
     fetchNewItems();
   }, []);
-
 
   const arrowStyle = {
     // arrow styling (had to manual style as react-slick doesn't allow complete customization for the arrows)
@@ -109,36 +108,55 @@ const NewItems = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-        {
-          isLoaded ? 
-          (  <Slider {...settings}>
-            {items.map((item) => (
-              <div key={item.id}>
-               <ItemCard item={item}/>
-              </div>
-            ))}
-          </Slider>) 
-          : 
-          (  <Slider {...settings}>
-            {new Array(4).fill(0).map((_, index) => (
-              <div key={index}>
-                <div className="nft__item gap">
-                  <div className="author_list_pp">
-                    <div className="skeleton-box" style={{ width: '50px', height: '50px', borderRadius: '50%' }}></div>
-                  </div>
+          {isLoaded ? (
+            <Slider {...settings}>
+              {items.map((item) => (
+                <div key={item.id}>
+                  <ItemCard item={item} />
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            <Slider {...settings}>
+              {new Array(4).fill(0).map((_, index) => (
+                <div key={index}>
+                  <div className="nft__item gap">
+                    <div className="author_list_pp">
+                      <div
+                        className="skeleton-box"
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          borderRadius: "50%",
+                        }}
+                      ></div>
+                    </div>
 
-                  <div className="nft__item_wrap">
-                    <div className="skeleton-box" style={{ width: '100%', height: '200px' }}></div>
-                  </div>
-                  <div className="nft__item_info">
-                    <div className="skeleton-box" style={{ width: '80%', height: '20px', marginBottom: '10px' }}></div>
-                    <div className="skeleton-box" style={{ width: '60%', height: '20px' }}></div>
+                    <div className="nft__item_wrap">
+                      <div
+                        className="skeleton-box"
+                        style={{ width: "100%", height: "200px" }}
+                      ></div>
+                    </div>
+                    <div className="nft__item_info">
+                      <div
+                        className="skeleton-box"
+                        style={{
+                          width: "80%",
+                          height: "20px",
+                          marginBottom: "10px",
+                        }}
+                      ></div>
+                      <div
+                        className="skeleton-box"
+                        style={{ width: "60%", height: "20px" }}
+                      ></div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </Slider>) 
-}
+              ))}
+            </Slider>
+          )}
         </div>
       </div>
     </section>

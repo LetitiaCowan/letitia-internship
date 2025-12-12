@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# NFT Marketplace
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive NFT marketplace built with React. Browse collections, explore items, and view detailed NFT information with real-time countdown timers for auction expiry dates.
 
-## Available Scripts
+👉 Architecture Docs: [ARCHITECTURE.md](./ARCHITECTURE.md)
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- **Browse & Explore** — Featured collections, new items, top sellers, and category browsing
+- **Item Details** — Comprehensive NFT information with creator and owner details
+- **Real-time Countdown Timers** — Live auction expiry countdowns using `Date.now()` for accurate time calculations
+- **Search & Filter** — Sort items by price, likes, and other criteria
+- **Author Profiles** — Explore collections by specific creators
+- **Responsive Design** — Fully mobile, tablet, and desktop friendly
+- **Loading States** — Skeleton loaders for smooth user experience
+- **Smooth Animations** — Scroll-triggered animations with AOS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🧰 Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Frontend**
+- React 17
+- React Router DOM 6
+- Bootstrap CSS
+- Custom CSS themes
 
-### `npm test`
+**State & Logic**
+- React Hooks (useState, useEffect)
+- Local component state management
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Data Fetching**
+- Axios
+- Firebase Cloud Functions API
 
-### `npm run build`
+**UI Components**
+- React Slick (carousels)
+- AOS (scroll animations)
+- React Icons
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ⏱️ Countdown Timer Implementation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The countdown timer system uses `Date.now()` to calculate real-time auction expiry countdowns:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Format Detection** — Automatically handles millisecond (13 digits) and second (10 digits) timestamps
+- **Real-time Updates** — Updates every second using `setInterval` with proper cleanup
+- **Integration** — Embedded in `ItemCard` components across New Items and Explore pages
+- **Calculation** — Uses `Date.now()` for accurate current timestamp, converts to seconds, and calculates time difference
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```javascript
+// Timer calculation using Date.now()
+const now = Math.floor(Date.now() / 1000);
+const expiryInSeconds = expiryDate > 9999999999 
+  ? Math.floor(expiryDate / 1000) 
+  : expiryDate;
+const timeDiff = expiryInSeconds - now;
+```
